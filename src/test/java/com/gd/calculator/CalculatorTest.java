@@ -29,8 +29,12 @@ class CalculatorTest {
         "0, 0, 0",
         "-1, -2, -3"
     })
-    void add_devrait_retourner_addition_de_chaque_nombres() {
+    void add_devrait_retourner_addition_de_chaque_nombres(int a, int b, int expected) {
+        //WHEN
+        int res = Calculator.add(a, b);
 
+        // THEN
+        assertThat(res).isEqualTo(expected);
     }
 
     @Test
@@ -44,5 +48,26 @@ class CalculatorTest {
 
         // THEN
         assertThat(resultat).isEqualTo(5);
+    }
+
+    @Test
+    void ensemble_chiffres_devrait_retourner_les_chiffres_distincts_d_un_nombre() {
+        //GIVEN
+        int ensemble = 7679;
+
+        // WHEN
+        var resultat = new Calculator().ensembleChiffres(ensemble);
+
+        // THEN
+        assertThat(resultat).containsExactlyInAnyOrder(6, 7, 9);
+    }
+
+    @Test
+    void ensemble_chiffres_devrait_ignorer_le_signe_d_un_nombre_negatif() {
+        // WHEN
+        var resultat = new Calculator().ensembleChiffres(-11);
+
+        // THEN
+        assertThat(resultat).containsExactly(1);
     }
 }
