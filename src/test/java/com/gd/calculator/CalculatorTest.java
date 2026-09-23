@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CalculatorTest {
 
@@ -48,6 +49,25 @@ class CalculatorTest {
 
         // THEN
         assertThat(resultat).isEqualTo(5);
+    }
+
+    @Test
+    void add_devrait_lever_une_exception_si_la_somme_depasse_max_int() {
+        assertThatThrownBy(() -> Calculator.add(Integer.MAX_VALUE, 1))
+                .isInstanceOf(ArithmeticException.class);
+    }
+
+    @Test
+    void add_devrait_lever_une_exception_si_la_somme_est_inferieure_a_min_int() {
+        assertThatThrownBy(() -> Calculator.add(Integer.MIN_VALUE, -1))
+                .isInstanceOf(ArithmeticException.class);
+    }
+
+    @Test
+    void divide_devrait_lever_une_exception_quand_le_diviseur_est_zero() {
+        assertThatThrownBy(() -> Calculator.divide(10, 0))
+                .isInstanceOf(ArithmeticException.class)
+                .hasMessage("Division par zéro impossible");
     }
 
     @Test

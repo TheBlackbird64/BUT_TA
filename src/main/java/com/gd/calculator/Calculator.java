@@ -6,10 +6,13 @@ import java.util.Set;
 public class Calculator {
 
     public static int add(int opG, int opD) {
-        return opG + opD;
+        return Math.addExact(opG, opD);
     }
 
     public static int divide(int opG, int opD) {
+        if (opD == 0) {
+            throw new ArithmeticException("Division par zéro impossible");
+        }
         return opG / opD;
     }
 
