@@ -1,0 +1,19 @@
+# Gradle
+.gradle/
+build/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# JaCoCo / IntelliJ coverage reports
+htmlReport/
+coverage/
+
+# Java
+*.class
+
+# OS files
+.DS_Store
+Thumbs.db
