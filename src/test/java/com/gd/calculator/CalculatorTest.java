@@ -1,13 +1,15 @@
 package com.gd.calculator;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class CalculatorTest {
 
     @Test
-    void statadd_devrait_calculer_la_somme_de_deux_int() {
+    void add_devrait_calculer_la_somme_de_deux_int() {
         // GIVEN
         int opG = 2;
         int opD = 3;
@@ -17,6 +19,18 @@ class CalculatorTest {
 
         // THEN
         assertThat(resultat).isEqualTo(5);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "0, 1, 1",
+        "1, 2, 3",
+        "-2, 2, 0",
+        "0, 0, 0",
+        "-1, -2, -3"
+    })
+    void add_devrait_retourner_addition_de_chaque_nombres() {
+
     }
 
     @Test
