@@ -6,16 +6,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class CalculatorTest {
 
-    private final Calculator calculator = new Calculator();
-
     @Test
-    void add_devrait_calculer_la_somme_de_deux_int() {
+    void statadd_devrait_calculer_la_somme_de_deux_int() {
         // GIVEN
         int opG = 2;
         int opD = 3;
 
         // WHEN
-        int resultat = calculator.add(opG, opD);
+        int resultat = Calculator.add(opG, opD);
 
         // THEN
         assertThat(resultat).isEqualTo(5);
@@ -28,7 +26,7 @@ class CalculatorTest {
         int opD = 2;
 
         // WHEN
-        int resultat = calculator.divide(opG, opD);
+        int resultat = Calculator.divide(opG, opD);
 
         // THEN
         assertThat(resultat).isEqualTo(5);
